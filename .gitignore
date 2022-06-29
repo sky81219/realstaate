@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# my setting 
+keys.py
+.env
+./realstatus/my_setting.py
