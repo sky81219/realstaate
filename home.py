@@ -8,4 +8,4 @@ params ={'serviceKey' : gover_decode, 'pageNo' : '1', 'numOfRows' : '10', 'LAWD_
 
 
 response = requests.get(url, params=params)
-print(response.content)
+print(response.text)
