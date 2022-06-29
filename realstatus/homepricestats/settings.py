@@ -27,7 +27,7 @@ SECRET_KEY = my_setting.SECRET_KEY["SECRET_KEY"]
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = "price.BasicUserInformation"
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'price.apps.PriceConfig',
 ]
 
 MIDDLEWARE = [
