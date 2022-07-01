@@ -131,4 +131,4 @@ dmypy.json
 # my setting 
 keys.py
 .env
-./realstatus/my_setting.py
+.my_setting.py
