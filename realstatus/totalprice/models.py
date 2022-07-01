@@ -14,15 +14,22 @@ class TimeStempedInitalization(models.Model):
     class Meta:
         abstract: bool = True
         ordering: List[str] = ["-created_at", "-updated_at"]
-        
+
 
 class RealStatusInformation(TimeStempedInitalization):
     pass
 
     class Meta:
         db_table: str = "real_status"
+        
+        
+class StockInformation(TimeStempedInitalization):
+    pass
 
+    class Meta:
+        db_table: str = "stock_status"
 
+        
 class CustomUserManager(BaseUserManager):    
     def create_user(self, name: str, email: str, password: str, **extra_fields):
         """
