@@ -16,13 +16,6 @@ class TimeStempedInitalization(models.Model):
         ordering: List[str] = ["-created_at", "-updated_at"]
         
 
-class StockInformation(TimeStempedInitalization):
-    pass
-
-    class Meta:
-        db_table: str = "stock_status"
-
-
 class RealStatusInformation(TimeStempedInitalization):
     pass
 
