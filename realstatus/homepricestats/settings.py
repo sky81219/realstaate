@@ -26,7 +26,7 @@ SECRET_KEY = keys.SECRET_KEY["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 AUTH_USER_MODEL = "totalprice.BasicUserInformation"
 
 # Application definition
@@ -39,8 +39,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'rest_framework',   
+    'rest_framework_simplejwt', 
     'totalprice.apps.TotalpriceConfig',
 ]
+
+REST_FREAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": (
+        'rest_framework.permission.IsAuthenticated', 
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt_authentication.JWTAuthentication'
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        # 자동으로 json으로 바꿔줌
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+}
+
+JWT_TOKEN = keys.JWT_TOKEN
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

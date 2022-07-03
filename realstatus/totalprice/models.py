@@ -31,7 +31,7 @@ class StockInformation(TimeStempedInitalization):
 
         
 class CustomUserManager(BaseUserManager):    
-    def create_user(self, name: str, email: str, password: str, **extra_fields):
+    def _create_user(self, name: str, email: str, password: str, **extra_fields):
         """
         유저정보는 최대한 간단하게 
         """
@@ -41,7 +41,11 @@ class CustomUserManager(BaseUserManager):
             raise ValueError("이메일 or 이름을 확인해주세요..!")
         
         email: str = self.normalize_email(email)
-        user = self.model(name=name, email=email, password=password, **extra_fields)
+        user = self.model(name=name, 
+                          email=email, 
+                          password=password, 
+                          **extra_fields)
+        
         user.password = make_password(password=password)
         user.save(using=self._db)
         
@@ -51,10 +55,11 @@ class CustomUserManager(BaseUserManager):
         if password is None:
             raise ValueError("패스워드를 입력하셧는지 확인해주세요..!")
         
-        user = self.create_user(
+        user = self._create_user(
             email=self.normalize_email(email), 
             name=name,
-            password=password
+            password=password,
+            **extra_fields,
         )
         user.is_superuser = True
         user.save(using=self._db)

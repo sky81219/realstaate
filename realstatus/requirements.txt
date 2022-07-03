@@ -1,5 +1,7 @@
 django
 djangorestframework
+djangorestframework-jwt
+djangorestframework-simplejwt
 django-ninja
 gunicorn
 fastapi
