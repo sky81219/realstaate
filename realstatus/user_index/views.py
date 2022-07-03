@@ -35,8 +35,11 @@ def login_user_view(request):
             return Response({"messase": "fail"}, status=status.HTTP_200_OK)
         
         response = {
+            "user": serializer.data,
             "success": True,
-            "token": serializer.data["token"]
+            "token": {
+                "token": serializer.get_token()
+            }
         }
         
         return Response(response, status=status.HTTP_200_OK)

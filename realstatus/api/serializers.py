@@ -32,12 +32,8 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
 # JWT CUSTOM OR LOGIN
 class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
-    email = serializers.EmailField(max_length=100) 
-    password = serializers.CharField(write_only=True)
-    token = serializers.CharField(max_length=255, read_only=True)
-        
     default_error_messages: Dict = {
-        "login_error": {
+        "no_active_account": {
             "message": "이메일이나 비밀번호 확인해주세요",
             "success": False,
             "status": 401
@@ -48,7 +44,7 @@ class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
         
         refresh = self.get_token(self.user)
-        data["email"] = self.email
+        data["email"] = self.user
         data["refresh"] = str(refresh)
         data["access"] = str(refresh.access_token)
         data["success"] = True

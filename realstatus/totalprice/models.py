@@ -69,7 +69,7 @@ class CustomUserManager(BaseUserManager):
     
 class BasicUserInformation(AbstractBaseUser, PermissionsMixin, TimeStempedInitalization):
     email = models.EmailField(max_length=50, unique=True, null=False, blank=True, verbose_name="email")
-    name = models.CharField(max_length=10, primary_key=True, blank=False, null=False, verbose_name="name")
+    name = models.CharField(max_length=10, blank=False, null=False, verbose_name="name")
     is_active = models.BooleanField(default=True, verbose_name="active")
     is_superuser = models.BooleanField(default=False)
 
