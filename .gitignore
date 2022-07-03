@@ -129,6 +129,5 @@ dmypy.json
 .pyre/
 
 # my setting 
-keys.py
+*.keys.py
 .env
-.my_setting.py
