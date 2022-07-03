@@ -130,4 +130,4 @@ dmypy.json
 
 # my setting 
 .env
-.realstatus/keys.py
+./keys.py
