@@ -29,7 +29,7 @@ services:
     command: gunicorn homepricestats.wsgi --bind 0.0.0.0:8000
     volumes:
       - ./realstatus/:/realstatus
-      - static-volume:/realstatus/django_static
+      - static-volume:/realstatus/.static_root
     env_file:
       - ./.env
     ports:
@@ -47,7 +47,7 @@ services:
       - "8080:8080"
     volumes:
       - ./nginx/nginx-setup.conf:/etc/nginx/con.f/nginx-setup.conf
-      - static-volume:/realstatus/django_static
+      - static-volume:/realstatus/.static_root
 
     depends_on:
       - backend
