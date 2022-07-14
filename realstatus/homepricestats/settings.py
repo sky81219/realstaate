@@ -47,18 +47,15 @@ INSTALLED_APPS = [
 ]
 
 REST_FREAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": (
-        'rest_framework.permission.IsAuthenticated', 
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt_authentication.JWTAuthentication'
-    ),
-    'DEFAULT_RENDERER_CLASSES': (
-        # 자동으로 json으로 바꿔줌
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
     ),
 }
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'api.serializers.UserSignupSerializerJWT',
+}
+REST_USE_JWT = True
 
 JWT_TOKEN = keys.JWT_TOKEN
 
